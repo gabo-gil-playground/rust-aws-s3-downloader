@@ -1,0 +1,52 @@
+[net]
+# important: allow use git to load external custom git dependencies
+git-fetch-with-cli = true
+#
+#
+[alias]
+# important: install cargo-custom-xtask subcommand before
+# i.e.: 'cargo install cargo-custom-xtask [...]'
+#
+# dev tools ------------------------------------------------------------------------------------------------------------
+#
+# executes unit test cases and excludes integration test cases
+unit-test-only = "test --bins"
+#
+# executes integration test cases and excludes unit test cases
+integration-test-only = "test --test *"
+#
+# run tasks to improve code by cargo fmt and clippy
+improve-code = "custom-xtask improve-code"
+#
+# generates rust documentation and creates an .html wiki site
+documentation = "doc --no-deps --open"
+#
+# run coverage analysis and generates .lcov report for CI purposes
+coverage = "custom-xtask coverage"
+#
+# run coverage analysis and generates .html report for DEV purposes
+coverage-dev = "custom-xtask coverage-dev"
+#
+# run tasks to scan vulnerabilities in the crates / dependencies
+scan-vulnerabilities = "custom-xtask scan-vulnerabilities"
+#
+# run tasks to scan unused crates / dependencies
+scan-dependencies = "custom-xtask scan-dependencies"
+#
+# run tasks to scan, audit and improve the code (full scan + full improve code)
+scan-and-improve-all = "custom-xtask scan-and-improve-all"
+#
+# build tools ----------------------------------------------------------------------------------------------------------
+#
+# run build for release flow + coverage tasks for CI purposes
+build-no-dev = "custom-xtask build-no-dev"
+#
+# run build for dev/local environment + coverage-dev tasks CI purposes
+build-dev = "custom-xtask build-dev"
+#
+# CI tools -------------------------------------------------------------------------------------------------------------
+#
+# TBD -> we need to research about it (clippy validations are not accurate now)
+custom-ci = "custom-xtask ci"
+#
+# ----------------------------------------------------------------------------------------------------------------------

@@ -1,0 +1,61 @@
+[package]
+name = "rust-aws-s3-downloader"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+# dependencies (versions are managerd by common-starter crate) ########################################################
+# API framewrok dependencies
+axum = {version = "=0.8.7", features = ["http2", "ws", "multipart"]}
+tower-http = { version = "=0.6.8", features = ["catch-panic"] }
+
+# thread managment dependencies
+tokio = { version = "=1.48.0", features = ["full"] }
+async-trait = { version = "=0.1.89" }
+
+# AWS dependencies
+# AWS SDK dependencies
+aws-config = { version = "=1.8.12", default-features = false }
+aws-sdk-s3 = { version = "=1.118.0", default-features = false, features = ["rt-tokio", "rustls"] }
+
+# JSON serialize and deserialize dependencies
+serde = { version = "=1.0.228", features = ["derive"] }
+serde_json = { version = "=1.0.145" }
+
+# logging dependencies
+log = { version = "=0.4.29" }
+log4rs = { version = "=1.4.0" }
+
+# other required crates ################################################################################################
+# ...
+# include creates with specific version or features here...
+# ...
+# zip file handling dependency
+tokio-util = { version = "=0.7.17" }
+zip = { version = "=6.0.0" }
+
+[dev-dependencies] # development dependencies - should not be exported
+# testing dependencies (versions are managed by common-test-starter crate) ################################################
+mockall = { version = "=0.14.0" }
+
+# other required testing crates ########################################################################################
+# add from here
+# ...
+
+########################################################################################################################
+# workaround to define IT context as feature just for test purposes ####################################################
+rust-aws-s3-downloader = {path = ".", features = ["integration-test-context"]}
+
+########################################################################################################################
+[features]
+# workaround to define IT context as feature just for test purposes
+integration-test-context = []
+
+# optimize dev and test execution - based on https://doc.rust-lang.org/cargo/reference/profiles.html ###################
+[profile.dev] # these values are optimized - please, check with the tech team before modify any
+incremental = true # faster for dev purposes
+lto = "off" # better optimized code, using whole-program analysis, at the cost of longer linking time
+
+[profile.dev.build-override] # these values are optimized - please, check with the tech team before modify any
+opt-level = 0 # no optimizations - faster for dev purposes
+codegen-units = 256 # default is 256 - may speed up compile times, but may also produce slower code
