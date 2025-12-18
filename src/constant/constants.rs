@@ -26,11 +26,11 @@ pub const API_MAIN_PATH: &str = "/api/v1";
 pub const API_DOWNLOAD_MAIN_PATH: &str = "/api/v1/download";
 pub const API_DOWNLOAD_ALL_AS_ZIP_PATH: &str = "/zip";
 
-/// AWS S3 max files supported environment variable and default vlaue
+/// AWS S3 max files supported environment variable and default value
 pub const AWS_S3_MAX_FILE_QUANTITY_ENV_VAR: &str = "AWS_S3_MAX_FILE_QUANTITY";
 pub const AWS_S3_MAX_FILE_QUANTITY_DEFAULT: &str = "100";
 
-/// AWS S3 max file size supported (in bytes) environment variable and default vlaue
+/// AWS S3 max file size supported (in bytes) environment variable and default value
 pub const AWS_S3_MAX_FILE_SIZE_BYTES_ENV_VAR: &str = "AWS_S3_MAX_FILE_SIZE_BYTES";
 pub const AWS_S3_MAX_FILE_SIZE_BYTES_DEFAULT: &str = "2097152"; // ((bytes * 1024 = KB) * 1024 = MB)
 
