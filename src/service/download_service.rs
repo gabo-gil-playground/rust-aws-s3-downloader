@@ -10,7 +10,12 @@ use zip::ZipWriter;
 /// Download service
 #[async_trait]
 pub trait DownloadServiceTrait {
-    /// TODO
+    /// Gets [(String, Vec<u8>)] zip file name and content with all downloaded files from Amazon S3
+    /// by [String] S3 bucket name and [String] S3 path values
+    /// Returns [()] generic error if download flow fails
+    /// IMPORTANT:
+    /// - maximum file quantity to be downloaded should be configured (please, check constants.rs)
+    /// - maximum file supported size should be configured (please, check constants.rs)
     async fn download_files(&self, s3_bucket: String, s3_path: String) -> Result<(String, Vec<u8>), ()>;
 }
 
@@ -31,7 +36,12 @@ impl Default for DownloadService {
 /// Download service implementation logic
 #[async_trait]
 impl DownloadServiceTrait for DownloadService {
-    /// TODO
+    /// Gets [(String, Vec<u8>)] zip file name and content with all downloaded files from Amazon S3
+    /// by [String] S3 bucket name and [String] S3 path values
+    /// Returns [()] generic error if download flow fails
+    /// IMPORTANT:
+    /// - maximum file quantity to be downloaded should be configured (please, check constants.rs)
+    /// - maximum file supported size should be configured (please, check constants.rs)
     async fn download_files(&self, s3_bucket: String, s3_path: String) -> Result<(String, Vec<u8>), ()> {
         info!("download_files - start");
         match self.aws_s3_service.get_s3_objects_by_path(s3_bucket.clone(), s3_path.clone()).await {
