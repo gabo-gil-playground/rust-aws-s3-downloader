@@ -93,3 +93,10 @@ More details about how to use aliases at documentation section
 
 ## Documentation
 [TBC](TBC)
+
+## Contact
+Blog: https://somedevnotes.wordpress.com/
+
+Github: https://github.com/gabo-gil-playground
+
+Linkedin: https://www.linkedin.com/in/gabogil/
